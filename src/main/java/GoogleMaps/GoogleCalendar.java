@@ -3,6 +3,7 @@ package main.java.GoogleMaps;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidElement;
 import main.java.CommonFunctions.AppiumFunctions;
+import org.junit.AfterClass;
 import org.openqa.selenium.By;
 
 import io.appium.java_client.touch.TapOptions;
@@ -30,11 +31,13 @@ public class GoogleCalendar extends AppiumFunctions {
     private static final String MINUTES_SELECTION = "//*[@content-desc='Value']";
     private static final String TIME_DAY_NIGHT_SELECTION = "//android.widget.RadioButton[@text='value']";
     private static final String MEETING_TEXT = "//android.widget.EditText[contains(@resource-id,'calendar:id/input')]";
-    private static final String DONE_BUTTON = "//android.widget.Button[@text='DONE']";
     private static final String INVITE_PEOPLE = "//android.widget.EditText[contains(@resource-id,'guest_input')]";
     private static final String SAVE_BUTTON = "//android.widget.Button[@text='SAVE']";
+    private static final String MEETING_DAY = "//android.view.View[contains(@content-desc,'value, Open Day View')]";
+    private static final String MEETING_CONTENTS = "//android.view.View[contains(@content-desc, 'value')]";
     private AndroidElement androidElement;
     private TouchAction touchAction;
+    private String dateFormat;
 
     protected void navigateToCalendarMainPage() {
         AndroidElement androidElement;
@@ -60,7 +63,7 @@ public class GoogleCalendar extends AppiumFunctions {
         clickElementOnPage(ADD_NEW_EVENT_BUTTON);
         clickElementOnPage(EVENT_LINK);
         clickElementOnPage(START_DATE_LINK.replace("value", "start_date"));
-        String dateFormat = date.replace("-", " ");
+        dateFormat = date.replace("-", " ");
         List<AndroidElement> elementList = driver.findElements(
                 By.xpath(CALENDAR_DAY_TO_BE_CLICKED.replace("Value", dateFormat)));
         if (elementList.size() == 0) {
@@ -102,5 +105,17 @@ public class GoogleCalendar extends AppiumFunctions {
 
     protected void clickSaveButton() {
         clickElementOnPage(SAVE_BUTTON);
+    }
+
+
+    protected void validateMeetingInvite() {
+        validateElementOnPage(MEETING_DAY.replace("value", dateFormat));
+        validateElementOnPage(MEETING_CONTENTS.replace("value", "9:30 AM – 1:30 PM: WORKSHOP"));
+    }
+
+    @AfterClass
+    public static void tearDown() {
+        driver.close();
+        driver.quit();
     }
 }

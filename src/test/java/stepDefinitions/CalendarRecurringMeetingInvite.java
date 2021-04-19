@@ -57,6 +57,7 @@ public class CalendarRecurringMeetingInvite extends GoogleCalendar {
 
     @Then("^I Check if the meeting is created as expected$")
     public void iCheckIfTheMeetingIsCreatedAsExpected() {
+        validateMeetingInvite();
     }
 
     private Date returnWorkingDay(String expectedWeekday) {

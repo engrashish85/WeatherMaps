@@ -31,8 +31,8 @@ Feature: Surfing Selection Feature
     Then I Check if the meeting is created as expected
 
     Examples:
-      | WorkshopNumber | StandUpNumber |
-      | 5              | 4             |
+      | WorkshopNumber|
+      | 5             |
 
   #@tag2
   #Scenario Outline: Title of your scenario outline
