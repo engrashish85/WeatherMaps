@@ -21,8 +21,7 @@ Feature: Surfing Selection Feature
   Enter the Input Number in the Input dropdown
 
   @WeatherMapsRegression
-  Scenario Outline: Create a workshop meeting event from 9:30am to 1:30pm every Friday of the week for next 3
-  months. And call a stand up to discuss the progress on Monday for 15 minutes.
+  Scenario Outline: Create a workshop meeting event from 9:30am to 1:30pm every Friday of the week for next 3 months. And call a stand up to discuss the progress on Monday for 15 minutes.
     Given I have launched the Calendar App
     When It is a working Friday
     And Meeting is between 9:30am to 1:30pm
@@ -30,15 +29,10 @@ Feature: Surfing Selection Feature
     And I invite "<WorkshopNumber>" of people
     And I save the meeting
     Then I Check if the meeting is created as expected
-    When It is a working Monday
-    And Meeting is is for 15 minutes
-    Then I want to book a meeting with the title “Stand Up”
-    And I invite "<StandUpNumber>" of people
-    And I save the meeting
-    Then I Check if the meeting is created as expected
+
     Examples:
-      |WorkshopNumber|StandUpNumber|
-      |5            |4             |
+      | WorkshopNumber | StandUpNumber |
+      | 5              | 4             |
 
   #@tag2
   #Scenario Outline: Title of your scenario outline

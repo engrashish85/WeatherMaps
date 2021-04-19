@@ -2,10 +2,14 @@
   <library name="Appium">
     <CLASSES>
       <root url="file://$PROJECT_DIR$/../Appium" />
+      <root url="file://$PROJECT_DIR$/../../Software/Appium" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
       <root url="file://$PROJECT_DIR$/../Appium/src" />
+      <root url="file://$PROJECT_DIR$/../../Software/Appium" />
     </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/../../Software/Appium" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../../Software/Appium" recursive="false" type="SOURCES" />
   </library>
 </component>
