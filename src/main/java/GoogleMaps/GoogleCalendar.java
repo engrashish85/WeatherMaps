@@ -35,8 +35,11 @@ public class GoogleCalendar extends AppiumFunctions {
     private static final String SAVE_BUTTON = "//android.widget.Button[@text='SAVE']";
     private static final String MEETING_DAY = "//android.view.View[contains(@content-desc,'value, Open Day View')]";
     private static final String MEETING_CONTENTS = "//android.view.View[contains(@content-desc, 'value')]";
+    private static final String MEETING_TITLE = "WORKSHOP";
+    private static final String EMAIL_IDs = "engr.ashish@gmail.com";
     private AndroidElement androidElement;
     private TouchAction touchAction;
+    private String startTime, endTime;
     private String dateFormat;
 
     protected void navigateToCalendarMainPage() {
@@ -76,8 +79,10 @@ public class GoogleCalendar extends AppiumFunctions {
     protected void selectStartAndEndTimeFromCalendar(int startHours, int startMinutes, int endHours, int endMinutes) {
         clickElementOnPage(START_TIME_VIEW.replace("value", "start_time"));
         selectTimeFromCalendar(startHours, startMinutes, "am");
+        startTime = startHours + ":" + startMinutes + " AM";
         clickElementOnPage(START_TIME_VIEW.replace("value", "end_time"));
         selectTimeFromCalendar(endHours, endMinutes, "pm");
+        endTime = endHours + ":" + endMinutes + " PM";
     }
 
     private void selectTimeFromCalendar (int hours, int minutes, String timeTypeSelection) {
@@ -95,22 +100,22 @@ public class GoogleCalendar extends AppiumFunctions {
 
     protected void selectMeetingTitle() {
         androidElement = returnElementByXPath(MEETING_TEXT);
-        androidElement.sendKeys("WORKSHOP");
+        androidElement.sendKeys(MEETING_TITLE);
     }
 
     protected void invitePeople() {
         androidElement = returnElementByXPath(INVITE_PEOPLE);
-        androidElement.sendKeys("engr.ashish@gmail.com");
+        androidElement.sendKeys(EMAIL_IDs);
     }
 
     protected void clickSaveButton() {
         clickElementOnPage(SAVE_BUTTON);
     }
 
-
     protected void validateMeetingInvite() {
         validateElementOnPage(MEETING_DAY.replace("value", dateFormat));
-        validateElementOnPage(MEETING_CONTENTS.replace("value", "9:30 AM – 1:30 PM: WORKSHOP"));
+        validateElementOnPage(MEETING_CONTENTS.replace("value", startTime + " - " + endTime +
+                ": " + MEETING_TITLE));
     }
 
     @AfterClass
