@@ -25,14 +25,20 @@ Feature: Surfing Selection Feature
     Given I like to surf in any of 2 beaches "<Out_of_top_ten>" of Sydney
     And I only like to surf on <Monday & Friday> in next 16 days
     When I look up the the weather forecast for the next 16 days with POSTAL CODES
-    Then I check to if see the temperature is between <10℃ and 20℃>
-    And I check wind speed to be between 5 and 15
+    Then I check to if see the temperature is between <7℃ and 20℃>
+    And I check wind speed to be between 2 and 15
     And I check to see if UV index is <= 12
     And I Pick (Display in logs/report) the best suitable 2 spots out of top 10 spots, based upon suitable weather forecast for the day
     Examples:
       | Out_of_top_ten |
       | BEACH_1        |
       | BEACH_2        |
+      | BEACH_3        |
+      | BEACH_4        |
+      | BEACH_5        |
+      | BEACH_6        |
+      | BEACH_7        |
+      | BEACH_8        |
 
   #@tag2
   #Scenario Outline: Title of your scenario outline

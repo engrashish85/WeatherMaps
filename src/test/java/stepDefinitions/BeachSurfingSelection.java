@@ -8,6 +8,7 @@ import cucumber.api.java.en.When;
 import main.java.WeatherMaps.Top10Beaches;
 import main.java.WeatherMaps.WeatherMaps;
 
+import java.io.IOException;
 import java.net.UnknownHostException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -69,7 +70,10 @@ public class BeachSurfingSelection extends WeatherMaps {
     }
 
     @And("^I Pick \\(Display in logs/report\\) the best suitable (\\d+) spots out of top (\\d+) spots, based upon suitable weather forecast for the day$")
-    public void iPickDisplayInLogsReportTheBestSuitableSpotsOutOfTopSpotsBasedUponSuitableWeatherForecastForTheDay(int arg0, int arg1) {
-
+    public void iPickDisplayInLogsReportTheBestSuitableSpotsOutOfTopSpotsBasedUponSuitableWeatherForecastForTheDay(int arg0, int arg1) throws IOException {
+        initializeExcel();
+        appendDataToSheet();
+        closeWorkBook();
     }
+
 }
