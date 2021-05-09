@@ -56,15 +56,20 @@ public class BeachSurfingSelection extends WeatherMaps {
 
     @And("^I check wind speed to be between (\\d+) and (\\d+)$")
     public void iCheckWindSpeedToBeBetweenAnd(int lowSpeed, int highSpeed) {
-        validateWindSpeedRange(lowSpeed, highSpeed);
+        if (isBeachFavorable.equals(true)) {
+            validateWindSpeedRange(lowSpeed, highSpeed);
+        }
     }
 
     @And("^I check to see if UV index is <= (\\d+)$")
     public void iCheckToSeeIfUVIndexIs(int uvIndex) {
-        validateUVIndex(uvIndex);
+        if (isBeachFavorable.equals(true)) {
+            validateUVIndex(uvIndex);
+        }
     }
 
     @And("^I Pick \\(Display in logs/report\\) the best suitable (\\d+) spots out of top (\\d+) spots, based upon suitable weather forecast for the day$")
     public void iPickDisplayInLogsReportTheBestSuitableSpotsOutOfTopSpotsBasedUponSuitableWeatherForecastForTheDay(int arg0, int arg1) {
+
     }
 }
