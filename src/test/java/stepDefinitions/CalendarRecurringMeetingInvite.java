@@ -14,7 +14,6 @@ import java.util.Date;
 public class CalendarRecurringMeetingInvite extends GoogleCalendar {
 
     Logger logger = Logger.getLogger(this.getClass());
-    GoogleCalendar googleCalendar = new GoogleCalendar();
     private String dateToBeReturned;
 
     @Given("^I have launched the Calendar App$")
