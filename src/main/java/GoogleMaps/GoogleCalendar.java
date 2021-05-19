@@ -8,14 +8,18 @@ import org.openqa.selenium.By;
 
 import io.appium.java_client.touch.TapOptions;
 
-
+import java.io.IOException;
 import java.util.List;
+
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 
 import static io.appium.java_client.touch.offset.ElementOption.element;
 
 public class GoogleCalendar extends AppiumFunctions {
     private static final String RIGHT_ARROW_NAVIGATION =
             "//android.widget.ImageView[@resource-id='com.google.android.calendar:id/right_arrow']";
+    Logger logger = Logger.getLogger(this.getClass());
     private static final String GOT_IT_BUTTON = "//android.widget.Button[@text='GOT IT']";
     private static final String ADD_NEW_EVENT_BUTTON =
             "//android.widget.ImageButton[@content-desc='Create new event and more']";
@@ -42,11 +46,12 @@ public class GoogleCalendar extends AppiumFunctions {
     private String startTime, endTime;
     private String dateFormat;
 
-    protected void navigateToCalendarMainPage() {
+    protected void navigateToCalendarMainPage() throws IOException {
         AndroidElement androidElement;
         androidElement = returnElementByXPath(RIGHT_ARROW_NAVIGATION);
         for (int i = 0; i < 3; i++) {
             androidElement.click();
+            takeScreenshot();
         }
         androidElement = returnElementByXPath(GOT_IT_BUTTON);
         androidElement.click();
@@ -60,6 +65,7 @@ public class GoogleCalendar extends AppiumFunctions {
     protected void clickElementOnPage(String xPath) {
         returnElementByXPath(xPath);
         androidElement.click();
+        logger.info("Clicked on Element having xpath as - "+xPath);
     }
 
     protected void selectDateFromCalendar(String date) {
@@ -114,7 +120,7 @@ public class GoogleCalendar extends AppiumFunctions {
 
     protected void validateMeetingInvite() {
         validateElementOnPage(MEETING_DAY.replace("value", dateFormat));
-        validateElementOnPage(MEETING_CONTENTS.replace("value", startTime + " - " + endTime +
+        validateElementOnPage(MEETING_CONTENTS.replace("value", startTime + " – " + endTime +
                 ": " + MEETING_TITLE));
     }
 

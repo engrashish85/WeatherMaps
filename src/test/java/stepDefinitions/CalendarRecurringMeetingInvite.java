@@ -28,7 +28,7 @@ public class CalendarRecurringMeetingInvite extends GoogleCalendar {
     @When("^It is a working Friday$")
     public void itIsAWorkingFriday() {
         Date expectedDate = returnWorkingDay("Fri");
-        logger.info("Date of next working Friday is - "+dateToBeReturned);
+        logger.info("Date of next working Friday is - "+expectedDate);
         dateToBeReturned = returnDateInTheCorrespondingFormat(expectedDate, "dd-MMMM-yyyy");
         logger.info("Date after conversion is - "+dateToBeReturned);
         selectDateFromCalendar(dateToBeReturned);

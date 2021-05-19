@@ -17,10 +17,10 @@
 ## (Comments)
 #Sample Feature Definition Template
 @tag
-Feature: Surfing Selection Feature
-  Enter the Input Number in the Input dropdown
+Feature: Calendar Invite Feature
+  Select the meeting from calendar and validate the meeting is created as expected
 
-  @WeatherMapsRegression
+  @WeatherMapsRegression1
   Scenario Outline: Create a workshop meeting event from 9:30am to 1:30pm every Friday of the week for next 3 months. And call a stand up to discuss the progress on Monday for 15 minutes.
     Given I have launched the Calendar App
     When It is a working Friday
