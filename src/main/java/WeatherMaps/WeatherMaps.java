@@ -1,6 +1,7 @@
 package main.java.WeatherMaps;
 
 import com.sun.istack.logging.Logger;
+import com.sun.media.sound.InvalidDataException;
 import main.java.CommonFunctions.RestAssuredCommonFunctions;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -132,7 +133,7 @@ public class WeatherMaps extends RestAssuredCommonFunctions {
         }
     }
 
-    protected void appendDataToSheet() {
+    protected void appendDataToSheet() throws InvalidDataException {
         if (top10Beaches.size() > 0) {
             String temp;
             Boolean rowFound = false;
@@ -152,7 +153,7 @@ public class WeatherMaps extends RestAssuredCommonFunctions {
                                 cell.setCellValue(top10Beaches.get(0).returnPostalCodeOfBeach());
                                 break;
                             default:
-                                logger.severe("Invalid row number given");
+                                throw new InvalidDataException("Data provided "+ j + " is not correct");
                         }
                     }
                     break;
