@@ -10,10 +10,13 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "resources/features",
         glue = {"test/java/stepDefinitions"},
-        tags = {"@WeatherMapsRegression1"},
-        plugin = {"html:test-output/cucumber-html-report", "json:test-output/cucumber-json/report.json",
-                "pretty:test-output/cucumber-pretty/pretty.txt", "usage:test-output/cucumber-usage/usage-report.json",
-                "junit:test-output/cucumber-junit-reports/jnit-reports.xml",
+        tags = {"@listAllHeroKUAppFacts"},
+        plugin = {
+//                "pretty",
+//                "html:test-output/cucumber-html-report", "json:test-output/cucumber-json/report.json",
+//                "pretty:test-output/cucumber-pretty/pretty.txt", "usage:test-output/cucumber-usage/usage-report.json",
+                "com.cucumber.listener.ExtentCucumberFormatter:output/Extent-Report/Extent_Report.html",
+                "junit:test-output/cucumber-junit-reports/junit-reports.xml"
         }
 )
 
