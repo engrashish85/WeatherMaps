@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "resources/features",
         glue = {"test/java/stepDefinitions"},
-        tags = {"@listAllHeroKUAppFacts"},
+        tags = {"@listHeroKUAppFactsWithID"},
         plugin = {
 //                "pretty",
 //                "html:test-output/cucumber-html-report", "json:test-output/cucumber-json/report.json",
