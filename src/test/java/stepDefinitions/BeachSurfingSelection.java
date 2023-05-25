@@ -5,11 +5,12 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import main.java.CommonFunctions.IOFunctions;
 import main.java.WeatherMaps.Top10Beaches;
 import main.java.WeatherMaps.WeatherMaps;
+import main.java.config.Globals;
 
 import java.io.IOException;
-import java.net.UnknownHostException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -34,7 +35,6 @@ public class BeachSurfingSelection extends WeatherMaps {
         logger.info("The dates for Mondays and Fridays in the next 16 days are - "+dates);
     }
 
-
     @Given("^I like to surf in any of 2 beaches \"([^\"]*)\" of Sydney$")
     public void iLikeToSurfInAnyOfBeachesOfSydney(String beachName) {
         // Write code here that turns the phrase above into concrete actions
@@ -43,9 +43,10 @@ public class BeachSurfingSelection extends WeatherMaps {
     }
 
     @When("^I look up the the weather forecast for the next 16 days with POSTAL CODES$")
-    public void iLookUpTheTheWeatherForecastForTheNextDaysWithPOSTALCODES() throws UnknownHostException {
+    public void iLookUpTheTheWeatherForecastForTheNextDaysWithPOSTALCODES() throws IOException {
         restParameters.put("postal_code", beachEnum.returnPostalCodeOfBeach());
-        response = getAPIRequest(restParameters);
+        response = getAPIRequest(new IOFunctions().readValueFromPropertiesFile(Globals.PROPERTIES_FILE_LOCATION.toString(),
+                "WEATHERMAPS_BASE_URL"), null, restParameters);
         logger.info("The data returned by API request is - "+ response);
         returnDataFromResponse(response);
     }

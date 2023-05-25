@@ -20,7 +20,7 @@
 Feature: Surfing Selection Feature
   Enter the Input Number in the Input dropdown
 
-  @WeatherMapsRegression
+  @WeatherMapsRegression1
   Scenario Outline: As a choosey surfer
     Given I like to surf in any of 2 beaches "<Out_of_top_ten>" of Sydney
     And I only like to surf on <Monday & Friday> in next 16 days
