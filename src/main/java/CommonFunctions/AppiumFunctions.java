@@ -6,7 +6,6 @@ import io.appium.java_client.remote.AndroidMobileCapabilityType;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.remote.MobilePlatform;
 import org.apache.commons.io.FileUtils;
-import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -26,7 +25,6 @@ import static org.junit.Assert.assertTrue;
 public class AppiumFunctions {
 
     public static AndroidDriver<AndroidElement> driver;
-    Logger logger = Logger.getLogger(AppiumFunctions.class);
 
     protected AndroidDriver<AndroidElement> getAndroidDriver() throws MalformedURLException {
         DesiredCapabilities cap = new DesiredCapabilities();
@@ -37,7 +35,6 @@ public class AppiumFunctions {
                 "com.android.calendar.AllInOneActivity");
         AndroidDriver<AndroidElement> driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), cap);
         driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
-        logger.info("Invoked Calendar application successfully");
         return driver;
     }
 
